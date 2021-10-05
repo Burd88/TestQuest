@@ -14,8 +14,10 @@ namespace TestQuest
         private static IWebDriver driver = new ChromeDriver();
         private static readonly By _logInButton = By.XPath("//span[text()='Личный кабинет']");
         private static readonly By _demobutton = By.XPath("//a[text()='Демо-версия']");
-        private static readonly By _summ = By.XPath("//span[@class='nowrap main-page_title_sum']");
+        private static readonly By _linkImage = By.XPath("//a[@class='UserInfo_photo__2bWyM']");
         private static readonly By _image = By.XPath("//*[@class='UserInfo_defaultAvatar__3dWDS']");
+        private static readonly By _summ = By.XPath("//span[@class='nowrap main-page_title_sum']");
+        
         static void Main(string[] args)
         {
             Test1();
@@ -25,6 +27,8 @@ namespace TestQuest
             Test3();
             Thread.Sleep(1000);
             Test4();
+            Thread.Sleep(1000);
+            Test41();
             Thread.Sleep(1000);
             Test5();
             Thread.Sleep(1000);
@@ -80,13 +84,13 @@ namespace TestQuest
 
         }
 
-        private static void Test4()
+        private static void Test4()//Размер ссылки-кнопки
         {
             try
             {
-                var image = driver.FindElement(_image);
-               var imageWidth = Convert.ToInt32(image.GetAttribute("width"));
-                var imageHeight = Convert.ToInt32(image.GetAttribute("height"));
+                var image = driver.FindElement(_linkImage);
+               var imageWidth = Convert.ToInt32(image.GetCssValue("width").Replace("px",""));
+                var imageHeight = Convert.ToInt32(image.GetCssValue("height").Replace("px", ""));
                 if (imageWidth == 31 && imageHeight == 31)
                 {
                     Console.WriteLine("Test4 Succses");
@@ -100,6 +104,30 @@ namespace TestQuest
             catch (Exception e)
             {
                 Console.WriteLine("Test4 Fail");
+                Console.WriteLine(e.Message);
+            }
+
+        }
+        private static void Test41()//Размер изображения
+        {
+            try
+            {
+                var image = driver.FindElement(_image);
+                var imageWidth = Convert.ToInt32(image.GetAttribute("width"));
+                var imageHeight = Convert.ToInt32(image.GetAttribute("height"));
+                if (imageWidth == 31 && imageHeight == 31)
+                {
+                    Console.WriteLine("Test41 Succses");
+                }
+                else
+                {
+                    Console.WriteLine($"Test41 fail. Incorrect image size: {imageWidth}x{imageHeight}");
+                }
+
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine("Test41 Fail");
                 Console.WriteLine(e.Message);
             }
 
