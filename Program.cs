@@ -20,71 +20,71 @@ namespace TestQuest
         
         static void Main(string[] args)
         {
-            Test1();
+            Step1();
             Thread.Sleep(1000);
-            Test2();
+            Step2();
             Thread.Sleep(1000);
-            Test3();
+            Step3();
             Thread.Sleep(1000);
-            Test4();
+            Step4();
             Thread.Sleep(1000);
-            Test41();
+            Step41();
             Thread.Sleep(1000);
-            Test5();
+            Step5();
             Thread.Sleep(1000);
-            Test6();
+            Step6();
             Console.ReadLine();
         }
         
-        private static void Test1()
+        private static void Step1()
         {
             try
             {
                 driver.Navigate().GoToUrl("https://www.nalog.ru/");
                 driver.Manage().Window.Maximize();
-                Console.WriteLine("Test1 Succses");
+                Console.WriteLine("Step1 Succses");
 
             }
             catch(Exception e)
             {
-                Console.WriteLine("Test1 Fail");
+                Console.WriteLine("Step1 Fail");
                 Console.WriteLine(e.Message);
             }
             
         }
 
-        private static void Test2()
+        private static void Step2()
         {
             try
             {
                 var logIn = driver.FindElement(_logInButton);
                 logIn.Click();
-                Console.WriteLine("Test2 Succses");
+                Console.WriteLine("Step2 Succses");
             }
             catch (Exception e)
             {
-                Console.WriteLine("Test2 Fail");
+                Console.WriteLine("Step2 Fail");
                 Console.WriteLine(e.Message);
             }
 
         }
-        private static void Test3()
+        private static void Step3()
         {
             try
             {
                 var demo = driver.FindElement(_demobutton);
                 demo.Click();
-                Console.WriteLine("Test3 Succses");
+                Console.WriteLine("Step3 Succses");
             }
             catch (Exception e)
             {
-                Console.WriteLine("Test3 Fail");
+                Console.WriteLine("Step3 Fail");
                 Console.WriteLine(e.Message);
             }
 
         }
 
-        private static void Test4()//Размер ссылки-кнопки
+        private static void Step4()//Размер ссылки-кнопки
         {
             try
             {
@@ -93,22 +93,22 @@ namespace TestQuest
                 var imageHeight = Convert.ToInt32(image.GetCssValue("height").Replace("px", ""));
                 if (imageWidth == 31 && imageHeight == 31)
                 {
-                    Console.WriteLine("Test4 Succses");
+                    Console.WriteLine("Step4 Succses");
                 }
                 else
                 {
-                    Console.WriteLine($"Test4 fail. Incorrect image size: {imageWidth}x{imageHeight}");
+                    Console.WriteLine($"Step4 fail. Incorrect image size: {imageWidth}x{imageHeight}");
                 }
                 
             }
             catch (Exception e)
             {
-                Console.WriteLine("Test4 Fail");
+                Console.WriteLine("Step4 Fail");
                 Console.WriteLine(e.Message);
             }
 
         }
-        private static void Test41()//Размер изображения
+        private static void Step41()//Размер изображения
         {
             try
             {
@@ -117,23 +117,23 @@ namespace TestQuest
                 var imageHeight = Convert.ToInt32(image.GetAttribute("height"));
                 if (imageWidth == 31 && imageHeight == 31)
                 {
-                    Console.WriteLine("Test41 Succses");
+                    Console.WriteLine("Step41 Succses");
                 }
                 else
                 {
-                    Console.WriteLine($"Test41 fail. Incorrect image size: {imageWidth}x{imageHeight}");
+                    Console.WriteLine($"Step41 fail. Incorrect image size: {imageWidth}x{imageHeight}");
                 }
 
             }
             catch (Exception e)
             {
-                Console.WriteLine("Test41 Fail");
+                Console.WriteLine("Step41 Fail");
                 Console.WriteLine(e.Message);
             }
 
         }
 
-        private static void Test5()
+        private static void Step5()
         {
             try
             {
@@ -143,22 +143,22 @@ namespace TestQuest
                
                 if (summStr < 200000.00 && summStr > 0)
                 {
-                    Console.WriteLine("Test5 Succses");
+                    Console.WriteLine("Step5 Succses");
                 }
                 else
                 {
-                    Console.WriteLine("Test5 Fail" + "/nSumm not correct" + summStr);
+                    Console.WriteLine("Step5 Fail" + "/nSumm not correct" + summStr);
                 }
                 
             }
             catch (Exception e)
             {
-                Console.WriteLine("Test5 Fail");
+                Console.WriteLine("Step5 Fail");
                 Console.WriteLine(e.Message);
             }
 
         }
-        private static void Test6()
+        private static void Step6()
         {
             try
             {
@@ -168,11 +168,11 @@ namespace TestQuest
                 var check = isCheckProcess("chrome");
                 if (!check == true)
                 {
-                    Console.WriteLine("Test6 Succses");
+                    Console.WriteLine("Step6 Succses");
                 }
                 else
                 {
-                    Console.WriteLine("Test6 Fail");
+                    Console.WriteLine("Step6 Fail ");
                 }
                     
               
@@ -180,7 +180,7 @@ namespace TestQuest
             }
             catch (Exception e)
             {
-                Console.WriteLine("Test6 Fail");
+                Console.WriteLine("Step6 Fail");
                 Console.WriteLine(e.Message);
             }
 
